@@ -27,10 +27,8 @@ jobs:
           ENABLE_TRIVY_STDOUT: 'true'
           TRIVY_USERNAME: ${{ secrets.AQUADEV_USERNAME }}
           TRIVY_PASSWORD: ${{ secrets.AQUADEV_PASS }}
-          # AQUA_KEY: ${{ secrets.AQUA_KEY }}
-          # AQUA_SECRET: ${{ secrets.AQUA_SECRET }}
-          AQUA_KEY: nouJFbPaVuXElxuXgeD9j8
-          AQUA_SECRET: EhTdRr4vGI6NrsHptAj1A4kkYNCGl8bnSkR
+          AQUA_KEY: ${{ secrets.AQUA_KEY }}
+          AQUA_SECRET: ${{ secrets.AQUA_SECRET }}
           GITHUB_TOKEN: ${{ github.token }}
           AQUA_URL: https://api.eu-1.supply-chain.cloud.aquasec.com
           CSPM_URL: https://eu-1.api.cloudsploit.com
