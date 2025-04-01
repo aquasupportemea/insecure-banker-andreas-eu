@@ -34,7 +34,6 @@ jobs:
           # CSPM_URL: https://eu-1.api.cloudsploit.com
           # TRIVY_RUN_AS_PLUGIN: 'aqua'
 
-
   BILLY:
     name: BILLY
     runs-on: ubuntu-latest
