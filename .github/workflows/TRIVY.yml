@@ -1,4 +1,4 @@
-name: build
+name: TRIVY
 on:
   push:
     branches:

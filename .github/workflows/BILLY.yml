@@ -1,4 +1,4 @@
-name: build
+name: BILLY
 on:
   push:
     branches:
