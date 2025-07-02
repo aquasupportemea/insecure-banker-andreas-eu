@@ -79,7 +79,7 @@ jobs:
       - name: Billy health2
         run: |
           podman login registry.aquasec.com -u Andreas.Muller@aquasec.com -p 'jufean!0521'
-          ./billy generate \
+          ./billy health \
           --aqua-key nouJFbPaVuXElxuXgeD9j8 \
           --aqua-secret EhTdRr4vGI6NrsHptAj1A4kkYNCGl8bnSkR \
           --cspm-url https://eu-1.api.cloudsploit.com \
