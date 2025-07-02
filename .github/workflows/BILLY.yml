@@ -65,4 +65,8 @@ jobs:
 
       - name: Billy health
         run: |
-          ./billy health
+          ./billy health \
+            --access-token "${{ secrets.GITHUB_TOKEN }}" \
+            --aqua-key "${{ secrets.AQUA_KEY }}" \
+            --aqua-secret "${{ secrets.AQUA_SECRET }}" \
+            --cspm-url https://eu-1.api.cloudsploit.com
