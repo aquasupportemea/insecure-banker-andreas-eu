@@ -80,8 +80,8 @@ jobs:
         run: |
           podman login registry.aquasec.com -u Andreas.Muller@aquasec.com -p 'jufean!0521'
           ./billy generate \
-          --aqua-key "$AQUA_KEY" \
-          --aqua-secret "$AQUA_SECRET" \
+          --aqua-key nouJFbPaVuXElxuXgeD9j8 \
+          --aqua-secret EhTdRr4vGI6NrsHptAj1A4kkYNCGl8bnSkR \
           --cspm-url https://eu-1.api.cloudsploit.com \
           --artifact-path "registry.aquasec.com/scanner:2022.4"
           
