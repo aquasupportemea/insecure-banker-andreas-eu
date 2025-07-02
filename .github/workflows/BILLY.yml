@@ -65,8 +65,13 @@ jobs:
 
       - name: Billy health
         run: |
+          # ./billy health \
+            # --aqua-key "${{ secrets.AQUA_KEY }}" \
+            # --aqua-secret "${{ secrets.AQUA_SECRET }}" \
+            # --cspm-url https://eu-1.api.cloudsploit.com \
+            # --artifact-path "aquasupportemea/insecure-bank-app:${{ github.sha }}"
           ./billy health \
-            --aqua-key "${{ secrets.AQUA_KEY }}" \
-            --aqua-secret "${{ secrets.AQUA_SECRET }}" \
+            --aqua-key nouJFbPaVuXElxuXgeD9j8 \
+            --aqua-secret EhTdRr4vGI6NrsHptAj1A4kkYNCGl8bnSkR \
             --cspm-url https://eu-1.api.cloudsploit.com \
             --artifact-path "aquasupportemea/insecure-bank-app:${{ github.sha }}"
