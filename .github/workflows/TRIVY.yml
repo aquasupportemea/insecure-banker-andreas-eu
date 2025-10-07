@@ -25,6 +25,8 @@ jobs:
         env:
           # OVERRIDE_RUN_ID: 696969
           ENABLE_TRIVY_STDOUT: 'true'
+          TRIVY_DEBUG: 'true'
+          TRIVY_QUIET: 'false'
           TRIVY_USERNAME: ${{ secrets.AQUADEV_USERNAME }}
           TRIVY_PASSWORD: ${{ secrets.AQUADEV_PASS }}
           AQUA_KEY: ${{ secrets.AQUA_KEY }}
