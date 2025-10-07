@@ -27,8 +27,6 @@ jobs:
           ENABLE_TRIVY_STDOUT: 'true'
           TRIVY_DEBUG: 'true'
           TRIVY_QUIET: 'false'
-          SAST_LOGS: 'true'
-          SAST_LOGS_DIR: '/tmp/.trivy'
           TRIVY_USERNAME: ${{ secrets.AQUADEV_USERNAME }}
           TRIVY_PASSWORD: ${{ secrets.AQUADEV_PASS }}
           AQUA_KEY: ${{ secrets.AQUA_KEY }}
@@ -38,9 +36,9 @@ jobs:
           CSPM_URL: https://eu-1.api.cloudsploit.com
           TRIVY_RUN_AS_PLUGIN: 'aqua'
 
-      - name: Test
-        run: |
-          ls -lRa /tmp
+      # - name: Test
+        # run: |
+          # ls -lRa /tmp
 
 
   # BILLY:
