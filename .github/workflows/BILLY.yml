@@ -71,7 +71,8 @@ jobs:
           docker image ls
 
       - name: Aqua Image Scanner
-        uses: ./.github/actions/Aqua_Image_Scanner
+        # uses: ./.github/actions/Aqua_Image_Scanner
+        uses: mulan04/Aqua_Image_Scanner@v1
         with:
           registry: registry.aquasec.com
           username: ${{ secrets.AQUA_USERNAME }}
