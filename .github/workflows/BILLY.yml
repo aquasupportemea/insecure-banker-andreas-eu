@@ -86,7 +86,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Aqua Scan Report
-          path: /tmp/scan.html
+          path: /tmp/out.html
           # path: |
-            # /tmp/scan.html
+            # /tmp/out.html
             # /tmp/out.json            
