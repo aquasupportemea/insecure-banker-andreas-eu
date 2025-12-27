@@ -80,7 +80,7 @@ jobs:
           tag: "10"
           run_args: "-v /var/run/docker.sock:/var/run/docker.sock \
 		             -v /tmp:/tmp \
-					 -e BUILD_URL=${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID} \
+					 -e BUILD_URL=${{ GITHUB_SERVER_URL }}/${{ GITHUB_REPOSITORY }}/actions/runs/${{ GITHUB_RUN_ID }} \
 					 -e BUILD_NUMBER=${{ github.sha }}"
           scan_args: "--local aquasupportemea/insecure-bank-app:${{ github.sha }} \
                       --host ${{ secrets.AQUA_HOST }} \
