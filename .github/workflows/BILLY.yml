@@ -70,7 +70,7 @@ jobs:
             # --artifact-path "aquasupportemea/insecure-bank-app:${{ github.sha }}"
           docker image ls
 
-      - name: Run private container
+      - name: Aqua Image Scanner
         uses: ./.github/actions/Aqua_Image_Scanner
         with:
           registry: registry.aquasec.com
@@ -78,5 +78,5 @@ jobs:
           password: ${{ secrets.AQUA_PASSWORD }}
           image: scanner
           tag: "10"
-          run_args: "-e ENV=prod -p 8080:8080"
-          command: "--help"
+          run_args: "-v /var/run/docker.sock:/var/run/docker.sock"
+          command: "--host ${{ secrets.AQUA_HOST }} --local aquasupportemea/insecure-bank-app:${{ github.sha }} --token ${{ secrets.AQUA_TOKEN }} --layer-vulnerabilities --no-verify --html"
