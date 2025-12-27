@@ -67,26 +67,26 @@ name: "Aqua registry login + run image scanner"
 description: "Logs into a private Aqua Docker registry and runs the image scanner from it"
 inputs:
   registry:
-    description: "Registry hostname (e.g. registry.aquasec.com)"
+    description: "Scanner Registry hostname (e.g. registry.aquasec.com)"
     required: true
   username:
-    description: "Registry username"
+    description: "Scanner Registry username"
     required: true
   password:
-    description: "Registry password"
+    description: "Scanner Registry password"
     required: true
-  image:
-    description: "Image name (e.g. scanner)"
+  scanner_image:
+    description: "Scanner Image name (e.g. scanner)"
     required: true
   tag:
-    description: "Image tag"
+    description: "Scanner Image tag"
     required: false
     default: "10"
   run_args:
     description: "Extra args passed to docker run (e.g. -e A=B -v ...)"
     required: false
     default: ""
-  command:
+  scan_args:
     description: "Command appended to docker run (optional)"
     required: false
     default: ""
@@ -98,21 +98,12 @@ inputs:
 runs:
   using: "composite"
   steps:
-    # - name: Login to registry
-      # shell: bash
-      # run: |
-        # set -euo pipefail
-        # echo "${{ inputs.password }}" | docker login "${{ inputs.registry }}" \
-          # -u "${{ inputs.username }}" --password-stdin
-
-    # Aqua Registry login
-    - name: Login to Aqua Registry
+    - name: Login to registry
       uses: docker/login-action@v3
       with:
           registry: "${{ inputs.registry }}"
           username: "${{ inputs.username }}"
           password: "${{ inputs.password }}"
-
 
     - name: Pull image
       shell: bash
@@ -127,7 +118,7 @@ runs:
         set -euo pipefail
         IMAGE="${{ inputs.registry }}/${{ inputs.image }}:${{ inputs.tag }}"
         # shellcheck disable=SC2086
-        docker run --rm ${{ inputs.run_args }} "$IMAGE" ${{ inputs.command }}
+        docker run --rm ${{ inputs.run_args }} "$IMAGE" scan ${{ inputs.scan_args }}
 
     - name: Logout
       if: ${{ inputs.logout == 'true' }}
@@ -138,13 +129,7 @@ runs:
 
 
 
-    # # Aqua Registry login
-    # - name: Login to Aqua Registry
-      # uses: docker/login-action@v1
-      # with:
-          # registry: registry.aquasec.com
-          # username: ${{ secrets.AQUA_USERNAME }}
-          # password: ${{ secrets.AQUA_PASSWORD }}
+
 
     # # Scan the Image
     # - name: Run the scanner
