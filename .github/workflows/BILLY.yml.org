@@ -4,11 +4,11 @@ on:
     branches:
       - main
   pull_request:
-    branches:
+    branches: 
       - main
     types:
       - opened
-
+      
 jobs:
   # TRIVY:
     # name: TRIVY
@@ -21,7 +21,7 @@ jobs:
         # uses: docker://aquasec/aqua-scanner
         # with:
          # args: trivy fs --sast --reachability --scanners misconfig,vuln,secret --db-repository=registry.aquasec.com/trivy-db:2 --checks-bundle-repository=registry.aquasec.com/trivy-checks:1 --java-db-repository=registry.aquasec.com/trivy-java-db:1 /github/workspace
-
+          
         # env:
           # # OVERRIDE_RUN_ID: 696969
           # ENABLE_TRIVY_STDOUT: 'true'
@@ -69,14 +69,3 @@ jobs:
             --cspm-url https://eu-1.api.cloudsploit.com \
             --artifact-path "aquasupportemea/insecure-bank-app:${{ github.sha }}"
           docker image ls
-
-      - name: Run private container
-        uses: ./.github/actions/Aqua_Image_Scanner
-        with:
-          registry: registry.example.com
-          username: ${{ secrets.REGISTRY_USER }}
-          password: ${{ secrets.REGISTRY_PASSWORD }}
-          image: scanner
-          tag: "10"
-          run_args: "-e ENV=prod -p 8080:8080"
-          command: "--help"
