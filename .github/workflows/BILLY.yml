@@ -82,6 +82,7 @@ jobs:
           scan_args: "--local aquasupportemea/insecure-bank-app:${{ github.sha }} --host ${{ secrets.AQUA_HOST }} --token ${{ secrets.AQUA_TOKEN }} --layer-vulnerabilities --jsonfile /tmp/out.json --htmlfile /tmp/out.html"
           
       - name: Upload
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: Aqua Scan Report
