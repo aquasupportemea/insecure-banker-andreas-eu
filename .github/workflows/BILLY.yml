@@ -71,7 +71,6 @@ jobs:
           docker image ls
 
       - name: Aqua Image Scanner
-        # uses: ./.github/actions/Aqua_Image_Scanner
         uses: mulan04/aqua-actions/Aqua_Image_Scanner@v1
         with:
           registry: registry.aquasec.com
@@ -79,5 +78,13 @@ jobs:
           password: ${{ secrets.AQUA_PASSWORD }}
           scanner_image: scanner
           tag: "10"
-          run_args: "-v /var/run/docker.sock:/var/run/docker.sock"
-          scan_args: "--local aquasupportemea/insecure-bank-app:${{ github.sha }} --host ${{ secrets.AQUA_HOST }} --token ${{ secrets.AQUA_TOKEN }} --layer-vulnerabilities --no-verify --html"
+          run_args: "-v /var/run/docker.sock:/var/run/docker.sock -v /tmp:/tmp"
+          scan_args: "--local aquasupportemea/insecure-bank-app:${{ github.sha }} --host ${{ secrets.AQUA_HOST }} --token ${{ secrets.AQUA_TOKEN }} --layer-vulnerabilities --jsonfile /tmp/out.json --htmlfile /tmp/out.html"
+          
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: Aqua Scan Report
+          path: |
+            /tmp/scan.html
+            /tmp/out.json
