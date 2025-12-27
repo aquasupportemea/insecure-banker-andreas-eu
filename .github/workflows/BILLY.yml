@@ -72,7 +72,7 @@ jobs:
 
       - name: Aqua Image Scanner
         # uses: ./.github/actions/Aqua_Image_Scanner
-        uses: mulan04/Aqua_Image_Scanner@v1
+        uses: mulan04/aqua-actions/Aqua_Image_Scanner@v1
         with:
           registry: registry.aquasec.com
           username: ${{ secrets.AQUA_USERNAME }}
