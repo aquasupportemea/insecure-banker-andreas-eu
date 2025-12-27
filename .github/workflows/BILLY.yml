@@ -76,7 +76,7 @@ jobs:
           registry: registry.aquasec.com
           username: ${{ secrets.AQUA_USERNAME }}
           password: ${{ secrets.AQUA_PASSWORD }}
-          image: scanner
+          scanner_image: scanner
           tag: "10"
           run_args: "-v /var/run/docker.sock:/var/run/docker.sock"
-          command: "--host ${{ secrets.AQUA_HOST }} --local aquasupportemea/insecure-bank-app:${{ github.sha }} --token ${{ secrets.AQUA_TOKEN }} --layer-vulnerabilities --no-verify --html"
+          scan_args: "--local aquasupportemea/insecure-bank-app:${{ github.sha }} --host ${{ secrets.AQUA_HOST }} --token ${{ secrets.AQUA_TOKEN }} --layer-vulnerabilities --no-verify --html"
