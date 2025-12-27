@@ -73,7 +73,7 @@ jobs:
       - name: Run private container
         uses: ./.github/actions/Aqua_Image_Scanner
         with:
-          registry: registry.example.com
+          registry: registry.aquasec.com
           username: ${{ secrets.AQUA_USERNAME }}
           password: ${{ secrets.AQUA_PASSWORD }}
           image: scanner
