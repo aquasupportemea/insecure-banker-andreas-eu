@@ -81,6 +81,7 @@ jobs:
             run_args: >-
               -v /var/run/docker.sock:/var/run/docker.sock
               -v /tmp:/tmp
+              -e BUILD_JOB_NAME=${{ github.repository }}
               -e BUILD_URL=${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
               -e BUILD_NUMBER=${{ github.sha }}
             scan_args: >-
